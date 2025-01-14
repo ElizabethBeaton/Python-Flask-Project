@@ -12,3 +12,8 @@
 * Task 10: Updating the Templates
 * Task 11: Edit Route
 * Task 12: Delete Route
+
+### Learning Objectives
+- Create Web Applications with Flask
+- Use Templates in Flask Applications
+- Use WTForms and SQLAlchemy in Flask Applications
