@@ -1,17 +1,23 @@
-from flask import Flask, render_template               
+from flask import Flask             
 
-app = Flask(__name__)         
-@app.route('/')               
-@app.route('/index')
-def index():                  
-    return render_template('index.html') 
+app = Flask(__name__) 
+app.config['SECRET_KEY'] = 'secret-key'        #secret key is needed when you use csrf. the secret key (lower-case) can be any word for now
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
+from routes import * 
 
 if __name__ == '__main__':
     app.run(debug=True)        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     """
@@ -27,4 +33,10 @@ if __name__ == '__main__':
     {%block main%}
     {%endblock main%}
     On the index.html and about.html files, whatre is between the block main and endblock, is what will display on each individual page alone with the code already on the base.html
+    """
+    
+    
+    """
+    Since we would be using a lot of '@app.route', along with a lot of other functionalities in our app.py file, its not a good idea to keep all of this code in a single file.
+    You can do this but not a good way to go about keeping everything in one place as itll be hard for you to navigate through your code
     """

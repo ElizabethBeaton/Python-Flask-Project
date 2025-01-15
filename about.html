@@ -1,7 +1,9 @@
-{% extends "base.html" %}
-
-{% block main %}
+{% extends "base.html" %} {% block main %}
 
 <p>Some content on the about page!</p>
-
+<form action="/about" method="post">
+    {{ form.csrf_token() }} <!-- 'csrf_token' protects form against any malicious requests/attacks-->
+    {{ form.title }}
+    {{ form.submit }}
+</form>
 {%endblock main %}
