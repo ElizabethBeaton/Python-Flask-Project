@@ -3,7 +3,12 @@
 <p>Some content on the about page!</p>
 <form action="/about" method="post">
     {{ form.csrf_token() }} <!-- 'csrf_token' protects form against any malicious requests/attacks-->
+    {{ form.title.label }}
     {{ form.title }}
     {{ form.submit }}
 </form>
+
+{% if title %}
+    <h1>{{ title }}</h1> <!-- if the title exists, itll be written in the h1 tag -->
+{% endif %}
 {%endblock main %}
