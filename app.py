@@ -1,7 +1,12 @@
-from flask import Flask             
+from flask import Flask  
+from flask_sqlalchemy import SQLAlchemy           
 
 app = Flask(__name__) 
 app.config['SECRET_KEY'] = 'secret-key'        #secret key is needed when you use csrf. the secret key (lower-case) can be any word for now
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
 
 from routes import * 
 
