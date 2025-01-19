@@ -1,14 +1,28 @@
 from flask import Flask  
-from flask_sqlalchemy import SQLAlchemy           
+from db import db
+#from flask_sqlalchemy import SQLAlchemy  
+from models import Task
+from flask_migrate import Migrate
 
 app = Flask(__name__) 
 app.config['SECRET_KEY'] = 'secret-key'        #secret key is needed when you use csrf. the secret key (lower-case) can be any word for now
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = SQLAlchemy(app)
+db.init_app(app)
 
-from routes import * 
+
+migrate = Migrate(app, db)
+#db = SQLAlchemy(app)
+
+# from models import Task
+
+
+# from migrations import *
+with app.app_context():
+    db.create_all()
+
+from routes import *
 
 if __name__ == '__main__':
     app.run(debug=True)        
